@@ -11,8 +11,10 @@ COPY /app /var/www/html/
 
 WORKDIR /var/www/html/
 RUN pip install -r requirements.txt
-RUN rm index.html
-RUN python3 run.py
+
+RUN echo "* * * * * /usr/bin/python3 /var/www/html/run.py" >> /etc/crontabs/root
+
+CMD ["crond", "-f"]
 
 EXPOSE 80
 CMD ["apache2ctl","-D","FOREGROUND"]
