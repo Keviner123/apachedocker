@@ -1,1 +1,1 @@
-docker build -t apache_image:1.0 .
+docker build -t apache_image1:1.0 .
